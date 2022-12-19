@@ -1,4 +1,6 @@
-﻿namespace BlazorEcommerce.Server.Data;
+﻿using Microsoft.EntityFrameworkCore.Query;
+
+namespace BlazorEcommerce.Server.Data;
 
 public class DataContext : DbContext
 {
@@ -7,6 +9,7 @@ public class DataContext : DbContext
 
 	}
 
+    //populate the model with data when you are creating it using EF Core Migrations.
 	protected override void OnModelCreating(ModelBuilder modelBuilder)
 	{
 		modelBuilder.Entity<Product>().HasData(
@@ -37,6 +40,7 @@ public class DataContext : DbContext
             );
 	}
 
+    //need this to perform queries on the DB like get, and create.
 	public DbSet<Product> Products { get; set; }
 
 
