@@ -1,5 +1,4 @@
 global using BlazorEcommerce.Server.Data;
-global using System.Net.Http.Json;
 global using BlazorEcommerce.Shared;
 global using Microsoft.EntityFrameworkCore;
 global using BlazorEcommerce.Server.Services.ProductService;
@@ -16,6 +15,7 @@ public class Program
         builder.Services.AddDbContext<DataContext>(options =>
         {
             options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection"));
+           
         });
 
         builder.Services.AddControllersWithViews();
