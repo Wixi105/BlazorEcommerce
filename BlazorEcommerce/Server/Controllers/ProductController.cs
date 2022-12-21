@@ -25,10 +25,17 @@ namespace BlazorEcommerce.Server.Controllers;
     [HttpGet("{productID}")]
     
     //another way of accessing the route item
-    //[Route("{id}")]
+    //[Route("{productID}")]
     public async Task<ActionResult<ServiceResponse<Product>>> GetProduct(int productID)
     {
         var result = await _productService.GetProductAsync(productID);
+        return Ok(result);
+    }
+
+    [HttpGet("category/{categoryUrl}")]
+    public async Task<ActionResult<ServiceResponse<List<Product>>>> GetProductsByCategory(string categoryUrl)
+    {
+        var result = await _productService.GetProductsByCategory(categoryUrl);
         return Ok(result);
     }
 
